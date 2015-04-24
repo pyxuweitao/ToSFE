@@ -1,0 +1,36 @@
+
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.container{
+	width: 1000px;
+    margin: 0px auto;
+}
+.main{
+    width:88%;
+    height: 1000px;
+    float:right;
+} 
+.guide{
+    position: fixed;
+    top: 63px;
+    z-index: 500;
+}
+.index{
+    height: 30px;  
+}
+.main_content{
+    width:80%;
+    height:1000px;
+}
+.script{
+    width: 20%;
+    height: 600px;
+    float: right;
+}
+.filepage{
+    height: 800px;
+    margin-top: 20px;
+}

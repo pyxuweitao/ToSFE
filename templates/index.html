@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>菜单</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" class="ui" href="{% static 'css/semantic.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<style>
+     tr:hover{ background-color : #e3e7e8;}
+    tr.filerow:hover{
+        background-color : #999999;
+    }
+</style>
+</head>
+<body>
+<div class="ui big inverted vertical demo sidebar accordion menu ">
+  <h3 class="ui big inverted center aligned icon header" style="padding-top: 20px" >
+      <i class="circular inverted send icon"></i>
+      <div class="content">
+          寻找你想要的科目
+      </div>
+  </h3>
+  <div class="ui inverted header title">
+      <i class="dropdown icon"></i>
+      <b>数学</b>
+  </div>
+  <div class="content">
+      <div class="menu">
+          <a class="item"><i class="edit icon"></i>高数</a>
+          <a class="item"><i class="globe icon"></i>线代</a>
+          <a class="item"><i class="settings icon"></i>概率论</a>
+          <a class="item"><i class="edit icon"></i>离散</a>
+      </div>
+  </div>
+  <div class="ui inverted header title">
+      <i class="dropdown icon"></i>
+      计算机
+  </div>
+  <div class="content">
+      <div class="menu">
+          <a class="item"><i class="edit icon"></i>C语言</a>
+          <a class="item"><i class="edit icon"></i>C++</a>
+          <a class="item"><i class="edit icon"></i>数据结构</a>
+          <a class="item"><i class="edit icon"></i>数据库</a>
+          <a class="item"><i class="edit icon"></i>操作系统</a>
+          <a class="item"><i class="edit icon"></i>计算机网络</a>
+      </div>
+  </div>
+  <div class="ui inverted header title">
+      <i class="dropdown icon"></i>
+      英语
+  </div>
+  <div class="content">
+      <div class="menu">
+          <a class="item"><i class="globe icon"></i>大英一</a>
+          <a class="item"><i class="globe icon"></i>大英二</a>
+          <a class="item"><i class="globe icon"></i>大英三</a>
+          <a class="item"><i class="globe icon"></i>大英四</a>
+      </div>
+  </div>
+</div>
+
+<div class="ui large inverted menu" style="margin-top: 0">
+    <div class="container">
+            <a class="item">
+                <i class="browser icon"></i>大一   
+            </a>
+            <a class="item">
+                <i class="browser icon"></i>大二
+            </a>
+            <a class="item">
+                <i class="browser icon"></i>大三
+            </a>
+            <a class="item">
+                <i class="browser icon"></i>大四
+            </a>
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="请输入搜索内容">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="guide">
+   <div class="ui black  launch right attached button" onclick="on()">
+    <i class="icon list layout"></i>
+    <span class="text">导航</span> 
+   </div>
+</div>
+<div class="main">
+
+    <div class="script" style="padding:30px">
+        <div class="colum" >
+            <div class="ui purple raised segment">
+                <a class="ui teal ribbon label">大家都在搜</a>
+                <p></p>
+                <p style="text-align: center"><a href="/">高数期中考试</a></p>
+                <p style="text-align: center"><a href="/">C语言期中考试</a></p>
+                <p style="text-align: center"><a href="/">C语言期中考试</a></p>
+                <p style="text-align: center"><a href="/">大英三期末试卷</a></p>
+                <p style="text-align: center"><a href="/">大英三期末试卷</a></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">找不到资源？试试分类查找</div>
+                <div class="description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <div class="ui vertical buttons" style="padding-left:20px">
+                   <div class="ui yellow inverted button">DOC文档</div>
+                   <div class="ui green inverted button">PDF文档</div>
+                   <div class="ui blue inverted button">EXCEL表</div>
+                   <div class="ui red inverted button">程序代码</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main_content">
+        <div class="index">
+            <div class="ui huge breadcrumb">
+              你所在的位置：
+              <a class="section">全部文件</a>
+              <div class="divider"> / </div>
+              <a class="section">水果</a>
+              <div class="divider"> / </div>
+              <div class="active section">苹果</div>
+            </div>
+       </div>
+       <div class="ui inverted divider"></div>
+      <table class="ui sortable table segment">
+            <thead>
+            <tr><th class="twelve wide">文件名</th>
+            <th class="four wide">最近更新时间</th>
+            </tr></thead>
+            <tbody id="sunguoyan">
+                <tr id="xuweitao">
+                    <td id="gaoshu"><i class="folder basic icon"></i>高数</td>
+                    <td>2015-04-13</td>
+                </tr>
+                <tr>
+                    <td><i class="folder basic icon"></i>C语言</td>
+                    <td>2015-04-13</td>
+                </tr>
+
+                     <tr class="filerow">
+
+                    <td><i class="file icon"></i>英语课件.ppt</td>
+
+                    <td>2015-04-14</td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+            <tr><th>3个用户</th>
+            <th>2个已接受</th>
+            </tr></tfoot>
+        </table>
+       <!--<div class="filepage">-->
+            <!--<div class="ui five column grid">-->
+                <!--<div class="three wide column">-->
+                    <!--<div class="ui segment" style="height:150px">-->
+                        <!--<a class=""></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="three wide column">-->
+                    <!--<div class="ui segment" style="height:150px">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="three wide column">-->
+                    <!--<div class="ui segment" style="height:150px">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="three wide column">-->
+                    <!--<div class="ui segment" style="height:150px">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="three wide column">-->
+                    <!--<div class="ui segment" style="height:150px">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="three wide column">-->
+                    <!--<div class="ui segment" style="height:150px">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/semantic.min.js' %}"></script>
+<script src="{% static 'js/jquery.tablesort.min.js' %}"></script>
+<script type="text/javascript">
+    function on(){
+    $('.demo.sidebar').sidebar('toggle');
+    }
+    $('.ui.accordion').accordion('toggle',onclick);
+</script>
+<script>
+    $(function(){ $('table').tablesort() });
+</script>
+<script>
+    $("#xuweitao").click(function(){
+
+        $.get("SourceShare/getDirectory?target="+$("#gaoshu").text(), function(data){
+            $("#sunguoyan").html("<tr><td>"+data+"</td><td>2015-04-19</td></tr>")});
+         } )
+</script>
+</body>
+</html>
