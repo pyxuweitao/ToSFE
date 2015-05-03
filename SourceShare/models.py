@@ -5,12 +5,12 @@ from django.db import models
 class FileInfo( models.Model ):
     class Meta:
         db_table = "fileInfo"
-        ordering = ['filename']
+        ordering = ['downloadCount']
 
     fileName      = models.CharField( max_length=30 )
     path          = models.FileField( u'文件存放路径' )
     downloadCount = models.BigIntegerField( default=0 )
-    #uploaduser    = models.
+    uploaduser    = models.CharField( max_length=30 )
     def __unicode__(self):
         return self.fileName
 

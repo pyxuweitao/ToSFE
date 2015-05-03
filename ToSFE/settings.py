@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname((os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -55,7 +55,9 @@ ROOT_URLCONF = 'ToSFE.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/xuweitao/Projects/ToSFE/templates/','/home/xuweitao/Projects/ToSFE/templates/test/'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'templates/test'),
+                 os.path.join(BASE_DIR, 'SourceShare/templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,16 +100,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-#STATIC_ROOT= '/home/xuweitao/Projects/ToSFE/static/'
+#STATIC_ROOT is used in production env
+#STATIC_ROOT= os.path.join( BASE_DIR, "static")#os.path.join( BASE_DIR, 'static/' )
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join( BASE_DIR, 'static/' ),
+    os.path.join( BASE_DIR, "static"),
+    os.path.join( BASE_DIR, "SourceShare/static"),
+    #os.path.join( BASE_DIR, 'SourceShare/static/' ),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
-)
 
+#MEDIA_ROOT=os.path.join( BASE_DIR, 'SourceShare/Storage' )
+MEDIA_URL ='/store/'

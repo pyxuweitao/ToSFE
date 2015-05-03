@@ -8,6 +8,5 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^admin/', include(admin.site.urls)),
-    url( r'^getDirectory/$', views.getDirectory ),
-    url( r'^test/$', views.test ),
+    url( r'^getDirectory$', views.getDirectory ,name='directory' ),
 ]

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>菜单</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" class="ui" href="{% static 'css/semantic.min.css' %}" />
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/semantic.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/segment.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.rcrumbs.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    <style>
+        tr:hover {
+            background-color: #e3e7e8;
+        }
+
+        tr.filerow:hover {
+            background-color: #999999;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+<div class="ui teal  inverted vertical demo sidebar accordion menu ">
+    <h3 class="ui big inverted center aligned icon header" style="padding-top: 20px">
+        <i class="circular  marker icon"></i>
+
+        <div class="content">
+            大几啦？
+        </div>
+    </h3>
+    <div class="ui inverted header title">
+        <i class="dropdown icon"></i>
+        <b>大一</b>
+    </div>
+    <div class="content">
+        <div class="menu">
+            <a class="item">上学期</a>
+            <a class="item">下学期</a>
+        </div>
+    </div>
+    <div class="ui inverted header title">
+      <i class="dropdown icon"></i>
+      <b>大二</b>
+    </div>
+    <div class="content">
+        <div class="menu">
+            <a class="item">上学期</a>
+            <a class="item">下学期</a>
+        </div>
+    </div>
+    <div class="ui inverted header title">
+        <i class="dropdown icon"></i>
+        <b>大三</b>
+    </div>
+    <div class="content">
+        <div class="menu">
+            <a class="item">上学期</a>
+            <a class="item">下学期</a>
+        </div>
+    </div>
+    <div class="ui inverted header title">
+        <i class="dropdown icon"></i>
+        <b>大四</b>
+    </div>
+    <div class="content">
+        <div class="menu">
+            <a class="item">上学期</a>
+            <a class="item">下学期</a>
+        </div>
+    </div>
+</div>
+
+<div class="ui  teal huge inverted menu" style="margin-top:0">
+    <div class="container">
+        <a class="item">
+            <i class="browser icon"></i>资源共享
+            <a class="ui tiny red tag label">BETA</a>
+        </a>
+
+        <div class="right menu">
+            <div class="item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="guide">
+    <div class="ui teal large animated launch right attached button" onclick="on()">
+        <div class="visible content">
+            <i class="large pointing left icon"></i>
+        </div>
+        <div class="hidden content" style="text-align: center">大几啦</div>
+    </div>
+</div>
+<div class="main">
+    <div class="script" style="padding:30px">
+        <div class="colum">
+            <div class="ui teal raised segment">
+                <a class="ui teal ribbon label">最新上传</a>
+                <p style="text-align: center"><a href="/">高数期中考试</a></p>
+
+                <p style="text-align: center"><a href="/">C语言期中考试</a></p>
+
+                <p style="text-align: center"><a href="/">C语言期中考试</a></p>
+
+                <p style="text-align: center"><a href="/">大英三期末试卷</a></p>
+
+                <p style="text-align: center"><a href="/">大英三期末试卷</a></p>
+            </div>
+            <div class="ui toggle button" data-content="敬请期待" data-variation="inverted">
+            我要上传
+            </div>
+        </div>
+
+    </div>
+    <div class="main_content">
+        <div class ="index">
+{#            <div class="rcrumbs" id="qindex" style="float:left;width: 80%">#}
+{#                你所在的位置：#}
+{#                <a class="section" id="allindex">全部文件</a>#}
+{#            </div>#}
+            <div  style="float:right;width: 20%">
+                <div class="ui  icon buttons" style="float: right">
+                <div class="ui teal button" id="p" onclick="switch1()"><i class="content basic icon link" data-content="列表模式"></i></div>
+                <div class="ui buttons or"></div>
+                <div class="ui button" id="q" onclick="switch2()"><i class="grid layout icon link" data-content="大图模式"></i></div>
+              </div>
+
+
+            </div>
+        </div>
+        <div class="ui inverted divider" style="margin-top: 0"></div>
+        <div class="filepage">
+            <table class="ui sortable table segment">
+                <thead>
+                <tr>
+                    <th class="eight wide">文件名</th>
+                    <th class="four wide">最近更新时间</th>
+                    <th class="four wide">上传者</th>
+                    <th class="three wide">文件大小</th>
+                    <th class="two wide">下载次数</th>
+                </tr>
+                </thead>
+                <tbody id="stb"></tbody>
+                </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/semantic.min.js' %}"></script>
+{#<script src="{% static 'js/jquery.tablesort.js' %}"></script>#}
+<script src="{% static 'js/jquery.tablesort.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.rcrumbs.min.js' %}"></script>
+<script type="text/javascript">
+    function on() {
+        $('.demo.sidebar').sidebar('toggle');
+    }
+
+    $('.ui.accordion').accordion('toggle', onclick);
+
+</script>
+<script>
+    $(function () {
+        $('table').tablesort()
+    });
+
+    //对面包屑退回提示框按钮的事件绑定
+    $(document).on('mouseover','i.icon.link',function(){
+      $(this).popup('show');
+
+    });
+    $(document).on('click','i.icon.link',function(){
+      $(this).popup('hide');
+    });
+    $(".ui.toggle.button").popup().click(function(){
+        if($(this).hasClass("active"))
+            $(this).removeClass("active");
+        else
+            $(this).addClass("active");
+    });
+</script>
+<script>
+    var CURRENT_PATH;
+    var PATH_ARRAY;
+    $(document).ready( function(){
+        proc('/');
+
+    } );
+    //ajax获取数据
+    function getDirectory(chosenPath) {
+        var data_return;
+        //阅读：http://www.w3school.com.cn/jquery/ajax_ajax.asp
+        $.ajax({
+          dataType:'json',
+          url:'/SourceShare/getDirectory?path='+chosenPath,
+          async:false,
+          success:function (data) {
+            data_return = data;
+        }});
+        CURRENT_PATH = data_return.path;
+        PATH_ARRAY = CURRENT_PATH.split("/");
+      
+        return data_return;
+        }
+    //重写表格
+    function rewriteTbody(data) {
+        $("#stb").html("");
+        $.each(data,function(index) {
+            if (data[index].type == 1) {
+                $("#stb").append("<tr> <td > <i class='folder basic icon'> </i> <a class='folder'>" + data[index].name + "</a> </td> " +
+                "<td>" + data[index].time + "</td> " +
+                "<td> </td> " +
+                "<td> </td> " +
+                "<td> </td> </tr>")
+            }
+            else {
+                $("#stb").append("<tr> <td> <i class='file icon'> </i> <a class='tfile' href='/sources"+CURRENT_PATH+data[index].name+"'>" + data[index].name + "</a> <td>" + data[index].time + "</td> " +
+                "<td>" + data[index].uploader + "</td> " +
+                "<td>" + data[index].size + "</td> " +
+                "<td>" + data[index].download_count + "</td> </tr>");
+            }
+        })
+    }
+    //重写大图模式
+    function rewriteCbody(data){
+      $("#blockfile").html("");
+      for(var i=0;i<data.length;i++){
+        if(data[i].type == 1){
+          $("#blockfile").append("<div class='card'> <a class='Cimage'> <img class='ui wireframe image' style='padding:30px' src='{%  static 'icons/folder.png' %}'> </a> <div class='extra'  style='text-align: center'> <a class='folder'>"+longstr(data[i].name)+"</a> </div> </div>")
+        }
+        else{
+          $("#blockfile").append("<div class='card'> <a class='Cimage'> <img class='ui wireframe image' style='padding:30px' src='{%  static 'icons/file.png' %}'> </a> <div class='extra'  style='text-align: center'> <a class='tfile' href='/sources"+CURRENT_PATH+data[i].name+"'>"+longstr(data[i].name)+"</a> </div> </div>")
+        }
+      }
+    }
+    //重写面包屑
+    function rewriteIndex() {
+        var $qindex = $("<div class='rcrumbs' id='qindex' style='float:left;width: 80%'></div>");
+        var $qindexList = $("<ul></ul>");
+        $qindexList.append("<li id='homeindex'><a href='/'>全部文件</a><span class='divider'>&nbsp>&nbsp</span></li>");
+        if( PATH_ARRAY.length > 2 ) {
+            for( var i = 1; i < PATH_ARRAY.length - 2; i++ ){
+                $qindexList.append( "<li><a href='#'>"+PATH_ARRAY[i]+"</a><span class='divider'>&nbsp>&nbsp</span></li>" );
+            }
+            $qindexList.append("<li><a href='#'>" + PATH_ARRAY[PATH_ARRAY.length - 2] + "</a><span class='divider'>&nbsp>&nbsp</span></li>");
+            $qindexList.prepend("<li><a href='#'><i class='reply icon link' data-content='返回上一层' data-variation='inverted'></i></a> <span class='divider'> |&nbsp</span></li>");
+        }
+        //第二次生成之前先删除前一次生成的qindex
+        $("#qindex").remove();
+        $qindex.html($qindexList);
+        $(".index").prepend($qindex);
+        $("#qindex").rcrumbs();
+    }
+    function proc(index) {
+        var data_get = getDirectory(index);
+        if( data_get == undefined){
+          alert('未获取到数据!');
+        }
+        else{
+          if($("#p").attr("class") == 'ui teal button'){
+            rewriteTbody(data_get.filedata);
+          }
+          else{
+            rewriteCbody(data_get.filedata);
+          }
+          rewriteIndex();
+        }
+    }
+    function longstr (str){
+        {#字符串过长换行#}
+      var n = Math.floor(str.length/10);
+
+      var strten;
+      var temp = "";
+      for(var i = 0 ; i < n ; i++){
+        strten = str.slice(10*i, 10 * (i+1));
+        temp += ( strten + '\n');
+      }
+      temp = temp + str.slice( n * 10, str.length);
+      return temp;
+    }
+
+    $(document).on('click','#qindex > ul li',function(){
+      var target_name = $(this).text();
+      var path_temp = "";
+        //返回上一级
+      if(target_name==""){
+        PATH_ARRAY.pop();
+        PATH_ARRAY.pop();
+        path_temp = PATH_ARRAY.join('/');
+          proc(path_temp+'/');
+      }
+      else{
+          console.log($(this));
+          var path_list = $.merge($(this), $(this).prevUntil("#homeindex") );
+          console.log(path_list);
+          for( var i = path_list.length - 1; i >= 0 ; i-- ){
+              path_temp += ( '/'+$(path_list[i]).find("a").text());
+              console.log(path_temp);
+          }
+          console.log(path_temp);
+        proc(path_temp+'/');
+      }
+    });
+
+    $(document).on('click', '.folder', function(e){
+      var tr_name = $(e.target).text();
+      proc(CURRENT_PATH+tr_name+'/');
+    });  
+
+    $(document).on('click','.Cimage',function(e){ 
+      var img_name = $(e.target).parent().next().children().text();
+      proc(CURRENT_PATH+img_name+'/'); 
+    });
+
+
+    $(document).on('click', ".item", function(e){
+      var lesson_name =$(e.target).text();
+      var subject_name = $(e.target).parent().parent().prev().children().eq(1).text();
+      alert(subject_name);
+      proc(subject_name+'/'+lesson_name);
+    });
+  </script>
+  <script>
+        function switch1() {
+            var html1 = '<div class="filepage"> <table class="ui sortable table segment"> <thead> <tr> <th class="twelve wide">文件名</th> <th class="four wide">最近更新时间</th> <th class="four wide">上传者</th> <th class="three wide">文件大小</th> <th class="two wide">下载次数</th> </tr> </thead> <tbody id="stb"> </tbody> </table> </div>';
+            $('.filepage').replaceWith(html1);
+            $('#p').removeClass("ui button").addClass("ui teal button");
+            $('#q').removeClass("ui teal button").addClass("ui button");
+            var data_get = getDirectory(CURRENT_PATH);
+            rewriteTbody(data_get.filedata);
+        }
+        function switch2() {
+            var html2 = '<div class="filepage"> <div class="ui seven doubling cards" id="blockfile"> </div> </div>';
+            $('.filepage').replaceWith(html2);
+            $('#q').removeClass("ui button").addClass("ui teal button");
+            $('#p').removeClass("ui teal button").addClass("ui button");
+            var data_get = getDirectory(CURRENT_PATH);
+            rewriteCbody(data_get.filedata);
+        }
+
+  </script>
+</body>
+</html>

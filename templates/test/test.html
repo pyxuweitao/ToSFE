@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
+
     <title>测试页</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.rcrumbs.css" %}"/>
+    <link rel="stylesheet" type="text/css" class="ui" href="{% static 'css/semantic.min.css' %}" />
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>sun</th>
-        <th>guo</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr id="sunguoyandashabi">
-        <td>yan</td>
-        <td>iloveyou</td>
-    </tr>
-    </tbody>
-</table>
-<a>孙国艳的大脸</a>
-</body>
-{% load staticfiles %}
-<script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+
+
+
+
+        <div id="ko">
+        <div class="rcrumbs" id="breadcrumbs" style="float:left;width: 80%">
+            <ul><li class='show'><a href='#'> <i class='reply icon link' data-content='返回上一层' data-variation='inverted'> </i> </a> <span class='divider'> |&nbsp;</span></li><li class='show'><a href='/'>全部文件</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li>
+                </ul>
+        </div>
+        <div class="ui button" style="float: right;width: 10%">hahah</div>
+        </div>
+
+
+
+<script type="text/javascript" src="{% static "js/jquery-2.1.3.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.rcrumbs.min.js" %}"></script>
 <script>
-    $("#sunguoyandashabi").click( function(){
-        alert("sunguoyanwoaini!");
-    } );
+{#        $(document).ready(function() {#}
+{#            var $rcr = $( "<div class='rcrumbs' id='breadcrumbs' style='float:left;width: 80%'></div>" );#}
+{#            var $rc = $("<ul><li class='show'><a href='#'> <i class='reply icon link' data-content='返回上一层' data-variation='inverted'> </i> </a> <span class='divider'> |&nbsp;</span></li><li class='show'><a href='/'>全部文件</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>home</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>xuweitao</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>Projects</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>ToSFE</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>SourceShare</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>Storage</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>物理实验</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>物理实验</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>sadasdsadsadsadsadsadsadsadsadsadsasadsadsa</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li></ul>");#}
+{#            console.log("ok");#}
+{#            $rcr.append($rc);#}
+{#            $( "#ko" ).prepend( $rcr );#}
+{#            console.log($rcr);#}
+{#            $("#breadcrumbs").rcrumbs();#}
+{#        });#}
+        $(".ui.button").click( function(){
+            var $rcr = $( "<div class='rcrumbs' id='breadcrumbs' style='float:left;width: 80%'></div>" );
+            var $rc = $("<ul><li class='show'><a href='#'> <i class='reply icon link' data-content='返回上一层' data-variation='inverted'> </i> </a> <span class='divider'> |&nbsp;</span></li><li class='show'><a href='/'>全部文件</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>home</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>xuweitao</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>Projects</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>ToSFE</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>SourceShare</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>Storage</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>物理实验</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>物理实验</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>sadasdsadsadsadsadsadsadsadsadsadsasadsadsa</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>的飒飒大叔看大家撒肯定撒进来的凯撒惊呆了空间的围殴iphone；风口浪尖；dslf</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li><li class='show'><a href='#'>撒旦撒旦撒旦撒旦撒旦撒让他很讨厌很讨厌就同意建议他教育局影剧院</a><span class='divider'>&nbsp;&gt;&nbsp;</span></li></ul>");
+            $rcr.append($rc);
+            $("#breadcrumbs").remove();
+            $("#ko").prepend( $rcr);
+            $("#breadcrumbs").rcrumbs();
+
+            //$("#breadcrumbs").rcrumbs();
+        } );
+
 </script>
+</body>
+
 </html>

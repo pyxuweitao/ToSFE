@@ -12,6 +12,6 @@ urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
     url( r'^$', views.index ),
     url( r'^SourceShare/', include( 'SourceShare.urls' ) ),
-
     url( r'^test/$', views.test ),
 ] + static( settings.STATIC_URL, document_root = settings.STATIC_ROOT )
+
